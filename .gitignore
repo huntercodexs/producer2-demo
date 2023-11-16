@@ -1,0 +1,5 @@
+*.log
+*.jar
+.idea/
+target/
+trash/
