@@ -12,46 +12,46 @@ public class RabbitMQDirectConfig {
 
     @Bean
     DirectExchange directExchange() {
-        return new DirectExchange("exchange-1-direct");
+        return new DirectExchange("exchange-com-direct");
     }
 
     @Bean
-    public Queue queue1Direct() {
-        return new Queue("queue-1-direct", true);
+    public Queue queuePurchase() {
+        return new Queue("queue-purchase", true);
     }
 
     @Bean
-    public Queue queue2Direct() {
-        return new Queue("queue-2-direct", true);
+    public Queue queueOrder() {
+        return new Queue("queue-order", true);
     }
 
     @Bean
-    public Queue queue3Direct() {
-        return new Queue("queue-3-direct", true);
+    public Queue queueDispatch() {
+        return new Queue("queue-dispatch", true);
     }
 
     @Bean
-    Binding binding1Direct(Queue queue1Direct, DirectExchange directExchange) {
+    Binding bindingPurchase(Queue queuePurchase, DirectExchange directExchange) {
         return BindingBuilder
-                .bind(queue1Direct)
+                .bind(queuePurchase)
                 .to(directExchange)
-                .with("routingKey-1-direct");
+                .with("routingKey-purchase");
     }
 
     @Bean
-    Binding binding2Direct(Queue queue2Direct, DirectExchange directExchange) {
+    Binding bindingOrder(Queue queueOrder, DirectExchange directExchange) {
         return BindingBuilder
-                .bind(queue2Direct)
+                .bind(queueOrder)
                 .to(directExchange)
-                .with("routingKey-2-direct");
+                .with("routingKey-order");
     }
 
     @Bean
-    Binding binding3Direct(Queue queue3Direct, DirectExchange directExchange) {
+    Binding bindingDispatch(Queue queueDispatch, DirectExchange directExchange) {
         return BindingBuilder
-                .bind(queue3Direct)
+                .bind(queueDispatch)
                 .to(directExchange)
-                .with("routingKey-3-direct");
+                .with("routingKey-dispatch");
     }
 
 }
