@@ -19,7 +19,7 @@ public class OrderController {
         this.amqpTemplate = queueSender;
     }
 
-    @GetMapping("/producer2-demo/api/v1/purchase")
+    @GetMapping("${api.endpoint.purchase}")
     public String purchase() {
         String id = String.valueOf(UUID.randomUUID());
 
@@ -33,7 +33,7 @@ public class OrderController {
         return "purchase: " + id;
     }
 
-    @GetMapping("/producer2-demo/api/v1/order/{purchase_id}")
+    @GetMapping("${api.endpoint.order}")
     public String order(@PathVariable("purchase_id") String purchaseId) {
 
         JSONObject jsonObject = new JSONObject();
@@ -44,7 +44,7 @@ public class OrderController {
         return "status: PROCESSING";
     }
 
-    @GetMapping("/producer2-demo/api/v1/dispatch/{purchase_id}")
+    @GetMapping("${api.endpoint.dispatch}")
     public String dispatch(@PathVariable("purchase_id") String purchaseId) {
 
         JSONObject jsonObject = new JSONObject();
